@@ -2,27 +2,37 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com</groupId>
-  <artifactId>assignment</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-
-  <name>assignment</name>
-  <url>http://maven.apache.org</url>
+	<groupId>com</groupId>
+	<artifactId>assignment</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	
+	<name>assignment</name>
+	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<springframework.version>4.3.20.RELEASE</springframework.version>
 		<springsecurity.version>4.1.1.RELEASE</springsecurity.version>
-		<jackson.library>2.9.5</jackson.library>
+		<jackson.version>2.9.5</jackson.version>
+		<junit.version>3.8.1</junit.version>
+		<servlet.version>3.1.0</servlet.version>
+		<comcodec.version>1.10</comcodec.version>
+		<hibernate.version>5.2.11.Final</hibernate.version>
+		<comchange.version>0.9.5.2</comchange.version>
+		<mysql.version>5.0.5</mysql.version>
+		<mavencomplierplugin.version>2.3.2</mavencomplierplugin.version>
+		<mavencompilersourcetarget.version>1.7</mavencompilersourcetarget.version>
+		<tomcat7plugin.version>2.2</tomcat7plugin.version>
+		<mavenwarplugin.version>3.2.2</mavenwarplugin.version>
 	</properties>
 	<dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+	    <dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <version>${junit.version}</version>
+	      <scope>test</scope>
+	    </dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -42,7 +52,7 @@
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-expression</artifactId>
-		    <version>4.3.1.RELEASE</version>
+		    <version>${springframework.version}</version>
 		</dependency>
 		<!-- Spring Security -->
 		<dependency>
@@ -60,19 +70,19 @@
 		<dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.library}</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
-            <version>${jackson.library}</version>
+            <version>${jackson.version}</version>
         </dependency>
         
         <!-- Servlet -->
         <dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
+			<version>${servlet.version}</version>
 			<scope>provided</scope>
 		</dependency>
         
@@ -80,61 +90,61 @@
 		<dependency>
 		    <groupId>commons-codec</groupId>
 		    <artifactId>commons-codec</artifactId>
-		    <version>1.10</version>
+		    <version>${comcodec.version}</version>
 		</dependency>
-	<!-- Spring ORM -->
-  <dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-orm</artifactId>
-	<version>${springframework.version}</version>
-  </dependency>
-	<!-- Hibernate ORM -->
-  <dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-core</artifactId>
-    <version>5.2.11.Final</version>
-  </dependency>
-  <!-- Hibernate-C3P0 Integration -->
-  <dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-c3p0</artifactId>
-    <version>5.2.11.Final</version>
-  </dependency>
-  <!-- c3p0 -->
-  <dependency>
-    <groupId>com.mchange</groupId>
-    <artifactId>c3p0</artifactId>
-    <version>0.9.5.2</version>
-  </dependency>
-  <!-- Mysql Connector -->
-  <dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <version>5.0.5</version>
-  </dependency>
- </dependencies>
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat7-maven-plugin</artifactId>
-        <version>2.2</version>
-      </plugin>
-    <plugin>
-    	<artifactId>maven-war-plugin</artifactId>
-	    <version>3.2.2</version>
-	    <configuration>
-	        <failOnMissingWebXml>false</failOnMissingWebXml>
-	    </configuration>
-	</plugin>
-    </plugins>
-  </build>
+		<!-- Spring ORM -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<!-- Hibernate ORM -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<!-- Hibernate-C3P0 Integration -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+  		<!-- c3p0 -->
+		<dependency>
+			<groupId>com.mchange</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>${comchange.version}</version>
+		</dependency>
+  		<!-- Mysql Connector -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${mavencomplierplugin.version}</version>
+				<configuration>
+					<source>${mavencompilersourcetarget.version}</source>
+					<target>${mavencompilersourcetarget.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>${tomcat7plugin.version}</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${mavenwarplugin.version}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

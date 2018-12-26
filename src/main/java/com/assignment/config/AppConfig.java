@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.security.SecurityConfiguration;
+import com.assignment.security.SecurityConfiguration;
 
 import static org.hibernate.cfg.Environment.*;
 

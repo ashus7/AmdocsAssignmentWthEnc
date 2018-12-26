@@ -2,7 +2,7 @@ package com.assignment.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import com.security.SecurityConfiguration;
+import com.assignment.security.SecurityConfiguration;
 
 public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
 

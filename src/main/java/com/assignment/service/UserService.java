@@ -6,9 +6,9 @@ import com.assignment.model.User;
 
 public interface UserService {
 
-	Integer save(User user);
-	   User get(Integer id);
-	   List<User> list();
-	   void update(Integer id, User user);
+	Integer save(User user) throws Exception;
+	   User get(Integer id) throws Exception;
+	   List<User> list() throws Exception;
+	   void update(Integer id, User user) throws Exception;
 	   void delete(Integer id);
 }

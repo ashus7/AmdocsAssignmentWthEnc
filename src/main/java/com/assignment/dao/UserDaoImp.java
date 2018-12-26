@@ -25,7 +25,7 @@ public class UserDaoImp implements UserDao{
 	private SessionFactory sessionFactory;
 
 	@Override
-	   public Integer save(User user) {
+	   public Integer save(User user)  throws Exception{
 //		  user.setPassword(generateHash(user.getPassword()));
 		try{
 			 user = (User) sessionFactory.getCurrentSession().save(user);
@@ -46,12 +46,12 @@ public class UserDaoImp implements UserDao{
 //			return user;
 //	   }
 	@Override
-	   public User get(Integer id) {
+	   public User get(Integer id)  throws Exception{
 			return sessionFactory.getCurrentSession().get(User.class, id);
 	   }
 
 	@Override
-	   public List<User> list() {
+	   public List<User> list()  throws Exception{
 	      Session session = sessionFactory.getCurrentSession();
 	      CriteriaBuilder cb = session.getCriteriaBuilder();
 	      CriteriaQuery<User> cq = cb.createQuery(User.class);
@@ -59,22 +59,12 @@ public class UserDaoImp implements UserDao{
 	      cq.select(root);
 	      Query<User> query = session.createQuery(cq);
 	      List<User> users = query.getResultList();
-//	      if(null != users){
-//	    	  Iterator<User> userItr = users.iterator();
-//	    	  while (userItr.hasNext()) {
-//	    		  User user = userItr.next();
-//				  if(null != user){
-//					  user.setPassword(generateHash(user.getPassword()));
-//				  }
-//			}
-//	    	  
-//	      }
 	      return users;
 	    		  
 	   }
 
 	@Override
-	   public void update(Integer id, User user) {
+	   public void update(Integer id, User user)  throws Exception{
 	      Session session = sessionFactory.getCurrentSession();
 	      User user2 = session.byId(User.class).load(id);
 	      user2.setUserName(user2.getUserName());
