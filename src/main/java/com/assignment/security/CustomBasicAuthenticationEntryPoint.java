@@ -1,4 +1,4 @@
-package com.security;
+package com.assignment.security;
 
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -25,7 +25,7 @@ public class UserController {
 
 	   /*---Add new User---*/
 	   @PostMapping("/user")
-	   public ResponseEntity<?> save(@RequestBody User user) throws SQLIntegrityConstraintViolationException {
+	   public ResponseEntity<?> save(@RequestBody User user) throws SQLIntegrityConstraintViolationException,Exception {
 		   if(user.getStatus().equalsIgnoreCase(User.ACTIVATED) || user.getStatus().equalsIgnoreCase(User.DEACTIVATED)){
 			   userService.save(user);
 			   return ResponseEntity.ok().body("New User has been saved with ID:" + user.getId());
@@ -37,7 +37,7 @@ public class UserController {
 
 	   /*---Get a User by id---*/
 	   @GetMapping("/user/{id}")
-	   public ResponseEntity<?> get(@PathVariable("id") Integer id) {
+	   public ResponseEntity<?> get(@PathVariable("id") Integer id) throws Exception {
 		   User user = userService.get(id);
 		   if(null != user){
 			   return ResponseEntity.ok().body(user);
@@ -49,14 +49,14 @@ public class UserController {
 
 	   /*---get all users---*/
 	   @GetMapping("/user")
-	   public ResponseEntity<List<User>> list() {
+	   public ResponseEntity<List<User>> list() throws Exception {
 	      List<User> users = userService.list();
 	      return ResponseEntity.ok().body(users);
 	   }
 
 	   /*---Update a user by id---*/
 	   @PutMapping("/user/{id}")
-	   public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody User user) {
+	   public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody User user) throws Exception {
 		   if(user.getStatus().equalsIgnoreCase(User.ACTIVATED) || user.getStatus().equalsIgnoreCase(User.DEACTIVATED)){
 			   userService.update(id, user);
 			   return ResponseEntity.ok().body("User has been updated successfully.");
