@@ -1,9 +1,6 @@
 package com.assignment.dao;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.Iterator;
+
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -26,7 +23,6 @@ public class UserDaoImp implements UserDao{
 
 	@Override
 	   public Integer save(User user)  throws Exception{
-//		  user.setPassword(generateHash(user.getPassword()));
 		try{
 			 user = (User) sessionFactory.getCurrentSession().save(user);
 			 if(null != user)
@@ -37,14 +33,7 @@ public class UserDaoImp implements UserDao{
 			 return 0;
 		}
 	   }
-//	@Override
-//	   public User get(Integer id) {
-//			User user = sessionFactory.getCurrentSession().get(User.class, id);
-//			if(null != user){
-//				user.setPassword(generateHash(user.getPassword()));
-//			}
-//			return user;
-//	   }
+
 	@Override
 	   public User get(Integer id)  throws Exception{
 			return sessionFactory.getCurrentSession().get(User.class, id);
@@ -78,25 +67,5 @@ public class UserDaoImp implements UserDao{
 	      Session session = sessionFactory.getCurrentSession();
 	      User user = session.byId(User.class).load(id);
 	      session.delete(user);
-	   }
-	
-	public static String generateHash(String input) {
-		StringBuilder hash = new StringBuilder();
-
-		try {
-			MessageDigest sha = MessageDigest.getInstance("SHA-1");
-			byte[] hashedBytes = sha.digest(input.getBytes());
-			char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-					'a', 'b', 'c', 'd', 'e', 'f' };
-			for (int idx = 0; idx < hashedBytes.length; ++idx) {
-				byte b = hashedBytes[idx];
-				hash.append(digits[(b & 0xf0) >> 4]);
-				hash.append(digits[b & 0x0f]);
-			}
-		} catch (NoSuchAlgorithmException e) {
-			// handle error here.
-		}
-
-		return hash.toString();
 	}
 }

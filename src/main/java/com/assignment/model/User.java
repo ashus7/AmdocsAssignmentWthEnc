@@ -28,7 +28,7 @@ public class User implements Serializable{
     private String userName;
 	@Column(name="status", nullable=false)
     private String status;
-	@Column(name="password", nullable=false,length=250)
+	@Column(name="password", nullable=false)
     private String password;
 	public Integer getId() {
 		return id;
